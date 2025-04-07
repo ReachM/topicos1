@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista de Funcionários</title>
+</head>
+<body>
+  <h1>Funcionários</h1>
+  <a href="/funcionario/novo">Novo Funcionário</a>
+  <table border="1" cellpadding="5">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Cargo</th>
+        <th>Salário</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {#for funcionario in funcionarios}
+      <tr>
+        <td>{funcionario.id}</td>
+        <td>{funcionario.nome}</td>
+        <td>{funcionario.email}</td>
+        <td>{funcionario.cargo}</td>
+        <td>{funcionario.salario}</td>
+        <td>
+          <a href="/funcionario/editar/{funcionario.id}">Editar</a>
+          <a href="/funcionario/deletar/{funcionario.id}" onclick="return confirm('Deseja excluir este funcionário?')">Excluir</a>
+        </td>
+      </tr>
+      {/for}
+    </tbody>
+  </table>
+  <a href="http://localhost:8080/">Voltar ao menu</a>
+</body>
+</html>

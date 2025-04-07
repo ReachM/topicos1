@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>{#if cliente.id}Editar Cliente{#else}Novo Cliente{/if}</title>
+</head>
+<body>
+  <h1>{#if cliente.id}Editar Cliente{#else}Novo Cliente{/if}</h1>
+  <form action="/cliente" method="post">
+    <input type="hidden" name="id" value="{cliente.id}" />
+    
+    <label>Nome:</label>
+    <input type="text" name="nome" value="{cliente.nome}" required /><br/>
+    
+    <label>Email:</label>
+    <input type="email" name="email" value="{cliente.email}" required /><br/>
+    
+    <button type="submit">Salvar</button>
+    <a href="/cliente">Cancelar</a>
+  </form>
+</body>
+</html>

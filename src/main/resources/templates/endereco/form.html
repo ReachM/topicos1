@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>{#if endereco.id}Editar Endereço{#else}Novo Endereço{/if}</title>
+</head>
+<body>
+  <h1>{#if endereco.id}Editar Endereço{#else}Novo Endereço{/if}</h1>
+  <form action="/endereco" method="post">
+    <input type="hidden" name="id" value="{endereco.id}" />
+    
+    <label>Logradouro:</label>
+    <input type="text" name="logradouro" value="{endereco.logradouro}" required /><br/>
+    
+    <label>Número:</label>
+    <input type="text" name="numero" value="{endereco.numero}" required /><br/>
+    
+    <label>Bairro:</label>
+    <input type="text" name="bairro" value="{endereco.bairro}" required /><br/>
+    
+    <label>Cidade:</label>
+    <input type="text" name="cidade" value="{endereco.cidade}" required /><br/>
+    
+    <label>Estado:</label>
+    <input type="text" name="estado" value="{endereco.estado}" required /><br/>
+    
+    <button type="submit">Salvar</button>
+    <a href="/endereco">Cancelar</a>
+  </form>
+</body>
+</html>

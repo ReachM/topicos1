@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>{#if estoque.id}Editar Estoque{#else}Novo Estoque{/if}</title>
+</head>
+<body>
+  <h1>{#if estoque.id}Editar Estoque{#else}Novo Estoque{/if}</h1>
+  <form action="/estoque" method="post">
+    <input type="hidden" name="id" value="{estoque.id}" />
+    
+    <label>Quantidade:</label>
+    <input type="number" name="quantidade" value="{estoque.quantidade}" required /><br/>
+    
+    <label>Localização:</label>
+    <input type="text" name="localizacao" value="{estoque.localizacao}" required /><br/>
+    
+    <button type="submit">Salvar</button>
+    <a href="/estoque">Cancelar</a>
+  </form>
+</body>
+</html>

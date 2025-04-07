@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Pessoa</title>
+</head>
+<body>
+    <h1>Cadastro de Pessoa</h1>
+
+    <form action="/pessoa" method="post">
+        <input type="hidden" name="id" value="{pessoa.id}">
+
+        <label>Nome:</label>
+        <input type="text" name="nome" value="{pessoa.nome}" required><br><br>
+
+        <label>Email:</label>
+        <input type="email" name="email" value="{pessoa.email}" required><br><br>
+
+        <label>Tipo:</label>
+        <select name="tipo" id="tipo" onchange="alternarCampos()" required>
+            <option value="">Selecione</option>
+            <option value="fisica">Física</option>
+            <option value="juridica">Jurídica</option>
+        </select><br><br>
+
+        <div id="cpfDiv" style="display:none;">
+            <label>CPF:</label>
+            <input type="text" name="cpf" value=""><br><br>
+        </div>
+
+        <div id="cnpjDiv" style="display:none;">
+            <label>CNPJ:</label>
+            <input type="text" name="cnpj" value=""><br><br>
+        </div>
+
+        <button type="submit">Salvar</button>
+    </form>
+
+    <script>
+        function alternarCampos() {
+            const tipo = document.getElementById("tipo").value;
+            document.getElementById("cpfDiv").style.display = tipo === "fisica" ? "block" : "none";
+            document.getElementById("cnpjDiv").style.display = tipo === "juridica" ? "block" : "none";
+        }
+
+        // manter visível se voltar do submit com erro
+        window.onload = alternarCampos;
+    </script>
+</body>
+</html>

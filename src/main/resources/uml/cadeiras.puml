@@ -1,0 +1,62 @@
+@startuml
+
+enum TipoCadeira {
+  GAMER
+  ESCRITORIO
+  SALA
+  COZINHA
+}
+
+abstract class Pessoa {
+  - id: Long
+  - nome: String
+  - cpf: String
+}
+
+class Cliente extends Pessoa {
+  - email: String
+}
+
+class Fabricante {
+  - id: Long
+  - nome: String
+}
+
+class Cadeira {
+  - id: Long
+  - cor: String
+  - modelo: String
+  - tipo: TipoCadeira
+  --
+  +fabricante: Fabricante
+  +estoque: Estoque
+}
+
+class Estoque {
+  - id: Long
+  - quantidade: int
+  --
+  +cadeira: Cadeira
+}
+
+class Pedido {
+  - id: Long
+  - data: LocalDate
+  --
+  +cliente: Cliente
+  +cadeiras: List<Cadeira>
+}
+
+class PedidoCadeira {
+  +pedido: Pedido
+  +cadeira: Cadeira
+  - quantidade: int
+}
+
+Fabricante "1" --> "0..*" Cadeira : fabrica >
+Cadeira "1" --> "1" Estoque : possui >
+Cliente "1" --> "0..*" Pedido : realiza >
+Pedido "1" --> "0..*" PedidoCadeira : contém >
+Cadeira "1" --> "0..*" PedidoCadeira : pertence >
+
+@enduml

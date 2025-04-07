@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista de Clientes</title>
+</head>
+<body>
+  <h1>Clientes</h1>
+  <a href="/cliente/novo">Novo Cliente</a>
+  <table border="1" cellpadding="5">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {#for cliente in clientes}
+      <tr>
+        <td>{cliente.id}</td>
+        <td>{cliente.nome}</td>
+        <td>{cliente.email}</td>
+        <td>
+          <a href="/cliente/editar/{cliente.id}">Editar</a>
+          <a href="/cliente/deletar/{cliente.id}" onclick="return confirm('Deseja excluir este cliente?')">Excluir</a>
+        </td>
+      </tr>
+      {/for}
+    </tbody>
+  </table>
+  <a href="http://localhost:8080/">Voltar ao menu</a>
+</body>
+</html>

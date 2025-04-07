@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Cadeiras</title>
+</head>
+<body>
+    <h1>Lista de Cadeiras</h1>
+
+    <a href="/cadeira/nova">Nova Cadeira</a>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Preço</th>
+                <th>Material</th>
+                <th>Fabricante</th>
+                <th>Categoria</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {#for cadeira in cadeiras}
+            <tr>
+                <td>{cadeira.nome}</td>
+                <td>{cadeira.preco}</td>
+                <td>{cadeira.material}</td>
+                {#if cadeira.fabricante}
+    <option value="{cadeira.fabricante.id}" selected>{cadeira.fabricante.nome}</option>
+{/if}
+
+                <td>{cadeira.categoria.nome}</td>
+                <td>
+                    <a href="/cadeira/editar/{cadeira.id}">Editar</a> |
+                    <a href="/cadeira/deletar/{cadeira.id}">Excluir</a>
+                </td>
+            </tr>
+            {/for}
+        </tbody>
+    </table>
+    <a href="http://localhost:8080/">Voltar ao menu</a>
+</body>
+</html>

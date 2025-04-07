@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista de Notas Fiscais</title>
+</head>
+<body>
+  <h1>Notas Fiscais</h1>
+  <a href="/nota-fiscal/nova">Nova Nota Fiscal</a>
+  <table border="1" cellpadding="5">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Número</th>
+        <th>Data de Emissão</th>
+        <th>Cliente</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {#for nota in notasFiscais}
+      <tr>
+        <td>{nota.id}</td>
+        <td>{nota.numero}</td>
+        <td>{nota.dataEmissao}</td>
+        <td>{nota.cliente.nome}</td>
+        <td>
+          <a href="/nota-fiscal/editar/{nota.id}">Editar</a>
+          <a href="/nota-fiscal/deletar/{nota.id}" onclick="return confirm('Deseja excluir esta nota?')">Excluir</a>
+        </td>
+      </tr>
+      {/for}
+    </tbody>
+  </table>
+</body>
+</html>

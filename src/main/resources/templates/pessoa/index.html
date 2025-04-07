@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Pessoas</title>
+</head>
+<body>
+    <h1>Pessoas</h1>
+    <a href="/pessoa/novo">Nova Pessoa</a>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Tipo</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+        {#for pessoa in pessoas}
+            <tr>
+                <td>{pessoa.nome}</td>
+                <td>{pessoa.email}</td>
+                <td>
+                    {#if pessoa.cpf}
+                        Pessoa Física
+                    {:else if pessoa.cnpj}
+                        Pessoa Jurídica
+                    {:else}
+                        Desconhecido
+                    {/if}
+                </td>
+                <td>
+                    <a href="/pessoa/deletar/{pessoa.id}">Excluir</a>
+                </td>
+            </tr>
+        {/for}
+        </tbody>
+    </table>
+    <a href="http://localhost:8080/">Voltar ao menu</a>
+</body>
+</html>

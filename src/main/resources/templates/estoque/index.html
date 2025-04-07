@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista de Estoques</title>
+</head>
+<body>
+  <h1>Estoques</h1>
+  <a href="/estoque/novo">Novo Estoque</a>
+  <table border="1" cellpadding="5">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Quantidade</th>
+        <th>Localização</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {#for estoque in estoques}
+      <tr>
+        <td>{estoque.id}</td>
+        <td>{estoque.quantidade}</td>
+        <td>{estoque.localizacao}</td>
+        <td>
+          <a href="/estoque/editar/{estoque.id}">Editar</a>
+          <a href="/estoque/deletar/{estoque.id}" onclick="return confirm('Deseja excluir este estoque?')">Excluir</a>
+        </td>
+      </tr>
+      {/for}
+    </tbody>
+  </table>
+</body>
+</html>

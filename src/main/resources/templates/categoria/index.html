@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista de Categorias</title>
+</head>
+<body>
+  <h1>Categorias</h1>
+  <a href="/categoria/nova">Nova Categoria</a>
+  <table border="1" cellpadding="5">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Descrição</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {#for categoria in categorias}
+      <tr>
+        <td>{categoria.id}</td>
+        <td>{categoria.nome}</td>
+        <td>{categoria.descricao}</td>
+        <td>
+          <a href="/categoria/editar/{categoria.id}">Editar</a>
+          <a href="/categoria/deletar/{categoria.id}" onclick="return confirm('Deseja excluir esta categoria?')">Excluir</a>
+        </td>
+      </tr>
+      {/for}
+    </tbody>
+  </table>
+  <a href="http://localhost:8080/">Voltar ao menu</a>
+</body>
+</html>

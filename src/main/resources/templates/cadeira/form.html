@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{#if cadeira.id == null}Nova{#else}Editar{/if} Cadeira</title>
+</head>
+<body>
+    <h1>{#if cadeira.id == null}Nova{#else}Editar{/if} Cadeira</h1>
+
+    <form method="post" action="/cadeira">
+        <input type="hidden" name="id" value="{cadeira.id}">
+
+        <label>Nome:</label>
+        <input type="text" name="nome" value="{cadeira.nome}" required>
+
+        <label>Preço:</label>
+        <input type="number" step="0.01" name="preco" value="{cadeira.preco}" required>
+
+        <label>Material:</label>
+        <select name="material" required>
+            {#for m in materiais}
+                <option value="{m}" {#if m == cadeira.material}selected{/if}>{m}</option>
+            {/for}
+        </select>
+
+        <label for="fabricante">Fabricante:</label>
+<select name="fabricanteId" required>
+    <option value="">Selecione</option>
+    {#for f in fabricantes}
+        <option value="{f.id}" {#if cadeira.fabricante && cadeira.fabricante.id == f.id}selected{/if}>{f.nome}</option>
+    {/for}
+</select>
+
+
+<label for="categoria">Categoria:</label>
+<select name="categoriaId" required>
+    <option value="">Selecione</option>
+    {#for c in categorias}
+        <option value="{c.id}" {#if cadeira.categoria && cadeira.categoria.id == c.id}selected{/if}>{c.nome}</option>
+    {/for}
+</select>
+
+
+        <button type="submit">Salvar</button>
+    </form>
+
+    <a href="/cadeira">Voltar</a>
+</body>
+</html>

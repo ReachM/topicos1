@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Formulário de Fabricante</title>
+</head>
+<body>
+    <h1>{fabricante.id == null ? 'Novo' : 'Editar'} Fabricante</h1>
+    <form action="/fabricante" method="post">
+        <input type="hidden" name="id" value="{fabricante.id}">
+        <label>Nome:</label>
+        <input type="text" name="nome" value="{fabricante.nome}" required><br><br>
+        <button type="submit">Salvar</button>
+    </form>
+    <a href="/fabricante">Voltar</a>
+</body>
+</html>

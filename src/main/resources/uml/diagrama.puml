@@ -1,0 +1,44 @@
+@startuml
+abstract class Pessoa {
+  - nome : String
+  - email : String
+}
+
+class Usuario extends Pessoa {
+  - id : Long
+  - perfil : String
+}
+
+class Cadeira {
+  - id : Long
+  - cor : String
+  - modelo : String
+  - tipo : TipoCadeira
+}
+
+class Fabricante {
+  - id : Long
+  - nome : String
+}
+
+class Estoque {
+  - id : Long
+  - quantidade : int
+}
+
+class Categoria {
+  - id : Long
+  - nome : String
+}
+
+class Loja {
+  - id : Long
+  - nome : String
+}
+
+Pessoa <|-- Usuario
+Cadeira --> Fabricante : many-to-one
+Cadeira --> Categoria : many-to-one
+Cadeira --> Estoque : one-to-one
+Loja --> Cadeira : many-to-many
+@enduml

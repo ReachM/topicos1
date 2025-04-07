@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>{#if notaFiscal.id}Editar Nota Fiscal{#else}Nova Nota Fiscal{/if}</title>
+</head>
+<body>
+  <h1>{#if notaFiscal.id}Editar Nota Fiscal{#else}Nova Nota Fiscal{/if}</h1>
+  <form action="/nota-fiscal" method="post">
+    <input type="hidden" name="id" value="{notaFiscal.id}" />
+    
+    <label>Número:</label>
+    <input type="text" name="numero" value="{notaFiscal.numero}" required /><br/>
+    
+    <label>Data de Emissão:</label>
+    <input type="date" name="dataEmissao" value="{notaFiscal.dataEmissao}" required /><br/>
+    
+    <label>Cliente:</label>
+    <select name="clienteId" required>
+      {#for cliente in clientes}
+      <option value="{cliente.id}" {notaFiscal.cliente?.id == cliente.id ? 'selected' : ''}>{cliente.nome}</option>
+      {/for}
+    </select><br/>
+    
+    <button type="submit">Salvar</button>
+    <a href="/nota-fiscal">Cancelar</a>
+  </form>
+</body>
+</html>
